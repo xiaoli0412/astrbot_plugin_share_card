@@ -1,0 +1,14 @@
+name: astrbot_plugin_share_card
+display_name: 卡片分享
+short_desc: 用 NapCat get_mini_app_ark 发 B站 小程序卡片，配 1-2 句文案
+desc: >-
+  主动分享哔哩哔哩视频，以 QQ 小程序卡片（NapCat get_mini_app_ark + json 段）推送并配 1-2 句文案
+version: 0.1.0
+author: xiaoli0412
+repo: https://github.com/xiaoli0412/astrbot_plugin_share_card
+category: 内容分享
+tags: [卡片, B站, NapCat, 分享]
+support_platforms:
+  - aiocqhttp
+astrbot_version: '>=4.24,<5'
+license: MIT

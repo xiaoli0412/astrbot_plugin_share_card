@@ -1,0 +1,74 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "总开关",
+    "hint": "关掉后 LLM 工具 share_video 与主动分享都不会有任何动作。",
+    "default": false
+  },
+  "proactive_enabled": {
+    "type": "bool",
+    "description": "主动分享",
+    "hint": "开启后按 proactive_interval_hours 从最近一次对话里提取话题，搜视频并推卡片。依赖 enabled=true。",
+    "default": false
+  },
+  "proactive_interval_hours": {
+    "type": "int",
+    "description": "主动分享间隔（小时）",
+    "hint": "默认 6 小时一次，最小 1 小时。",
+    "default": 6
+  },
+  "max_per_day": {
+    "type": "int",
+    "description": "每会话每日上限",
+    "hint": "主动分享每天最多推几次，超过就跳过，防刷屏。",
+    "default": 3
+  },
+  "search_source": {
+    "type": "string",
+    "description": "视频来源",
+    "hint": "目前只支持 bilibili（小红书暂无公开搜索接口，留作后续扩展位）。",
+    "default": "bilibili"
+  },
+  "bili_plugin_path": {
+    "type": "string",
+    "description": "astrbot_plugin_bilibili 路径",
+    "hint": "用来复用它的搜索客户端（WBI 签名）。容器内默认 /AstrBot/data/plugins/astrbot_plugin_bilibili。",
+    "default": "/AstrBot/data/plugins/astrbot_plugin_bilibili"
+  },
+  "fallback_to_text": {
+    "type": "bool",
+    "description": "卡片失败回退纯文本",
+    "hint": "卡片发送失败时退化成「标题 + 链接」的纯文本，保证用户至少能收到东西。",
+    "default": true
+  },
+  "log_ark_debug": {
+    "type": "bool",
+    "description": "记录 ark 调试日志",
+    "hint": "把 get_mini_app_ark 的请求参数与返回结构写进日志，排障时很有用。",
+    "default": true
+  },
+  "check_interval_minutes": {
+    "description": "检查间隔（分钟）",
+    "type": "int",
+    "default": 30,
+    "hint": "每隔多久检查一次「是否该发」。注意这不是发送间隔——只有条件成立才会真的发。"
+  },
+  "idle_trigger_hours": {
+    "description": "空闲多久才触发（小时）",
+    "type": "float",
+    "default": 6,
+    "hint": "距上次对话超过这个时长才考虑主动分享。调小=更主动，调大=更安静。"
+  },
+  "idle_max_hours": {
+    "description": "空闲上限（小时）",
+    "type": "float",
+    "default": 72,
+    "hint": "超过这个时长就不发了——那么久没说话，硬推一条会显得突兀。"
+  },
+  "min_share_gap_hours": {
+    "description": "两次分享最小间隔（小时）",
+    "type": "float",
+    "default": 8,
+    "hint": "防止短时间内连发多条分享。"
+  }
+}
